@@ -53,6 +53,10 @@
                 return `Aw dang! ${computerMove} beats ${playerMove}!`;
             case "draw" :
                 return "Draw! Try again";
+            default :
+                // Only reached if input was not a valid move
+                computerScore += 1;
+                return "Invalid move! You lose.";
         }
     }
 
@@ -72,8 +76,10 @@
         
         for (round; round < 5; round++) {
             displayScore();
-            // for now, player always throws rock. --- TODO
-            playerMove = "Rock";
+            // get player input
+            while (!(playerMove = prompt("Enter your move!"))) {
+                console.log("No input entered. Retrying.")
+            }
             computerMove = getComputerChoice();
             console.log(playRound(playerMove, computerMove));
         }
