@@ -51,6 +51,31 @@
         }
     }
 
+    function game() {
+        function displayScore() {
+            console.log(`Round: ${round}\n Player: ${playerScore}\t Computer: ${computerScore}`);
+        }
+
+        let round = 1;
+        let playerScore = 0;
+        let computerScore = 0;
+        let playerMove = '';
+        let computerMove = '';
+
+        console.log("Let's play a new game of \'Rock, Paper, Scissors!\'!");
+        
+        for (round; round <= 5; round++) {
+            displayScore();
+            // for now, player always throws rock. --- TODO
+            playerMove = "Rock"
+            computerMove = getComputerChoice();
+            playRound(playerMove, computerMove);
+        }
+        displayScore();
+    }
+
+    game();
+
 </script>
     
 </body>
