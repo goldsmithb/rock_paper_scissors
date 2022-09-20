@@ -19,6 +19,37 @@
         }
     }
 
+    // Return the score from perspective of player A's move
+    function scoreA(A, B) {
+        if (A === "rock") {
+            if (B === "rock") return "draw";
+            else if (B === "paper") return "lose";
+            else if (B === "scissors") return "win";
+        } else if (A === "paper") {
+            if (B === "rock") return "win";
+            else if (B === "paper") return "draw";
+            else if (B === "scissors") return "lost";
+        } else if (A === "scissors") {            
+            if (B === "rock") return "lose";
+            else if (B === "paper") return "win";
+            else if (B === "scissors") return "draw";
+        }
+        return "incorrect input";
+    }
+
+    function playRound(playerMove, computerMove) {
+        playerMove = playerMove.toLower();
+        computerMove = computerMove.toLower();
+
+        switch (scoreA(playerMove, computerMove)) {
+            case "win" :
+                return `Nice job! ${playerMove} beats ${computerMove}!`;
+            case "lose" :
+                return `Aw dang! ${computerMove} beats ${playerMove}!`;
+            case "draw" :
+                return "Draw! Try again";
+        }
+    }
 
 </script>
     
