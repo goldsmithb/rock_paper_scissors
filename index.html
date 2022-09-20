@@ -20,6 +20,7 @@
     }
 
     // Return the score from perspective of player A's move
+    // There must be a better way to code this logic --- TODO
     function scoreA(A, B) {
         if (A === "rock") {
             if (B === "rock") return "draw";
