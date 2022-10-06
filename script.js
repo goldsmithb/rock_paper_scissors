@@ -46,7 +46,7 @@ function scoreA(A, B) {
   } else if (A === "paper") {
     if (B === "rock") return "win";
     else if (B === "paper") return "draw";
-    else if (B === "scissors") return "lost";
+    else if (B === "scissors") return "lose";
   } else if (A === "scissors") {            
     if (B === "rock") return "lose";
     else if (B === "paper") return "win";
