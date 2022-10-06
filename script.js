@@ -23,6 +23,14 @@
 
  */
 
+    /*      GLOBAL VARIABLES        */
+let round = 1;
+let playerScore = 0;
+let computerScore = 0;
+let playerMove = '';
+let computerMove = '';
+
+
 /**
  * getCompuetChoice() : generate a random valid move for use by computer player
  * @returns a valid move
@@ -78,12 +86,6 @@ function playRound(playerMove, computerMove) {
   }
 }
 
-/*      GLOBAL VARIABLES        */
-let round = 1;
-let playerScore = 0;
-let computerScore = 0;
-let playerMove = '';
-let computerMove = '';
 
 function game() {
   function displayScore() {
