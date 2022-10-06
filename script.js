@@ -23,7 +23,6 @@
 
  */
 
-
 /**
  * getCompuetChoice() : generate a random valid move for use by computer player
  * @returns a valid move
@@ -65,8 +64,8 @@ function playRound(playerMove, computerMove) {
 
   switch (scoreA(playerMove, computerMove)) {
     case "win" :
-        playerScore +=1 ;
-        return `Nice job! ${playerMove} beats ${computerMove}!`;
+      playerScore +=1 ;
+      return `Nice job! ${playerMove} beats ${computerMove}!`;
     case "lose" :
       computerScore += 1;
       return `Aw dang! ${computerMove} beats ${playerMove}!`;
@@ -79,23 +78,26 @@ function playRound(playerMove, computerMove) {
   }
 }
 
-
 function game() {
   let round = 1;
   let playerScore = 0;
   let computerScore = 0;
   let playerMove = '';
   let computerMove = '';
-
+  const rock = document.getElementById("rock");
+  const paper = document.getElementById("paper");
+  const scissors = document.getElementById("scissors");
   const scoreboard = document.getElementById("scoreboard");
-  scoreboard.classList.remove('hidden');
 
-  function displayScore() {
-    
+  // Initialize scoreboard
+  scoreboard.classList.remove('hidden');
+  updateScore();
+
+  function updateScore() {
+    scoreboard.firstChild.textContent = `Player: ${playerScore}`;
+    scoreboard.lastChild.textContent = `Computer: ${computerScore}`;
   }
 
-  console.log("Let's play a new game of \'Rock, Paper, Scissors!\'!");
-  
   for (round; round < 5; round++) {
     displayScore();
     // get player input
