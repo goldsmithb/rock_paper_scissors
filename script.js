@@ -44,7 +44,8 @@ scoreboard.update = function () {
  * getCompuetChoice() : generate a random valid move for use by computer player
  * @returns a valid move
  */
-function getComputerChoice () {
+function getComputerChoice() {
+  console.log("Entered getComputerChoice()");
   let choice = Math.floor(Math.random()*3);
   switch(choice) {
     case 0: return "rock";
@@ -56,6 +57,7 @@ function getComputerChoice () {
 // Return the score from perspective of player A's move
 // There must be a better way to code this logic --- TODO
 function scoreA(A, B) {
+  console.log("Entered scoreA()");
   if (A === "rock") {
     if (B === "rock") return "draw";
     else if (B === "paper") return "lose";
@@ -76,8 +78,7 @@ function scoreA(A, B) {
  * Side Effects: playerScore and computerScore variables are updated
  * */
 function playRound(playerMove, computerMove) {
-  playerMove = playerMove.toLowerCase();
-  computerMove = computerMove.toLowerCase();
+  console.log("HI");
 
   switch (scoreA(playerMove, computerMove)) {
     case "win" :
@@ -106,8 +107,18 @@ function game() {
   controls.appendChild(resetBtn);
   //resetBtn.addEventListener('click', EndTheGame)
 
-  rock.addEventListener('click', )
-
+  rock.addEventListener('click', () => {
+    playRound('rock', getComputerChoice());
+    scoreboard.update();
+  });
+  paper.addEventListener('click', () => {
+    playRound('paper', getComputerChoice());
+    scoreboard.update();
+  });
+  scissors.addEventListener('click', () => {
+    playRound('scissors', getComputerChoice());
+    scoreboard.update();
+  });
 }
 
 const playBtn = document.getElementById("play_button");
