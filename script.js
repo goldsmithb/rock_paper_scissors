@@ -23,13 +23,6 @@
 
  */
 
-    /*      GLOBAL VARIABLES        */
-let round = 1;
-let playerScore = 0;
-let computerScore = 0;
-let playerMove = '';
-let computerMove = '';
-
 
 /**
  * getCompuetChoice() : generate a random valid move for use by computer player
@@ -88,8 +81,17 @@ function playRound(playerMove, computerMove) {
 
 
 function game() {
+  let round = 1;
+  let playerScore = 0;
+  let computerScore = 0;
+  let playerMove = '';
+  let computerMove = '';
+
+  const scoreboard = document.getElementById("scoreboard");
+  scoreboard.classList.remove('hidden');
+
   function displayScore() {
-    console.log(`Round: ${round}\n Player: ${playerScore}\t Computer: ${computerScore}`);
+    
   }
 
   console.log("Let's play a new game of \'Rock, Paper, Scissors!\'!");

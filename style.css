@@ -1,0 +1,9 @@
+#scoreboard {
+  color: blue;
+  background-color: green;
+  height: 100px;
+}
+
+.hidden {
+  display: none;
+}
