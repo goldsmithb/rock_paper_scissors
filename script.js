@@ -23,6 +23,23 @@
 
  */
 
+let round = 1;
+let playerScore = 0;
+let computerScore = 0;
+let playerMove = '';
+let computerMove = '';
+const rock = document.getElementById("rock");
+const paper = document.getElementById("paper");
+const scissors = document.getElementById("scissors");
+const scoreboard = document.getElementById("scoreboard");
+const controls = document.getElementById("controls");
+
+scoreboard.update = function () {
+  scoreboard.childNodes[0].textContent = `Round: ${round}`;
+  scoreboard.childNodes[1].textContent = `Player: ${playerScore}`;
+  scoreboard.childNodes[2].textContent = `Computer: ${computerScore}`;
+}
+
 /**
  * getCompuetChoice() : generate a random valid move for use by computer player
  * @returns a valid move
@@ -79,35 +96,18 @@ function playRound(playerMove, computerMove) {
 }
 
 function game() {
-  let round = 1;
-  let playerScore = 0;
-  let computerScore = 0;
-  let playerMove = '';
-  let computerMove = '';
-  const rock = document.getElementById("rock");
-  const paper = document.getElementById("paper");
-  const scissors = document.getElementById("scissors");
-  const scoreboard = document.getElementById("scoreboard");
-
   // Initialize scoreboard
   scoreboard.classList.remove('hidden');
-  updateScore();
+  scoreboard.update();
 
-  function updateScore() {
-    scoreboard.firstChild.textContent = `Player: ${playerScore}`;
-    scoreboard.lastChild.textContent = `Computer: ${computerScore}`;
-  }
+  // Initialize controls
+  resetBtn = document.createElement('button');
+  resetBtn.textContent = "New Game";
+  controls.appendChild(resetBtn);
+  //resetBtn.addEventListener('click', EndTheGame)
 
-  for (round; round < 5; round++) {
-    displayScore();
-    // get player input
-    while (!(playerMove = prompt("Enter your move!"))) {
-      console.log("No input entered. Retrying.")
-    }
-    computerMove = getComputerChoice();
-    console.log(playRound(playerMove, computerMove));
-  }
-  displayScore();
+  rock.addEventListener('click', )
+
 }
 
 const playBtn = document.getElementById("play_button");
