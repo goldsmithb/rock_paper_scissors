@@ -106,4 +106,7 @@ function game() {
   displayScore();
 }
 
-game();
+const playBtn = document.getElementById("play_button");
+playBtn.addEventListener('click', game);
+
+//game();
