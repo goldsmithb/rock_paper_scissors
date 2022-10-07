@@ -37,6 +37,11 @@ const paper = document.getElementById("paper");
 const scissors = document.getElementById("scissors");
 const scoreboard = document.getElementById("scoreboard");
 const controls = document.getElementById("controls");
+const announcer = document.getElementById("announcer");
+const playBtn = document.getElementById("play_button");
+playBtn.addEventListener("click", game);
+
+
 
 scoreboard.update = function () {
   scoreboard.childNodes[0].textContent = `Round: ${round}`;
@@ -53,55 +58,33 @@ function getComputerChoice() {
   return choices[Math.floor(Math.random()*3)];
 }
 
-// Return the score from perspective of player A's move
-// There must be a better way to code this logic --- TODO
-function scoreA(A, B) {
-  console.log("Entered scoreA()");
-
-
-  if (A === "rock") {
-    if (B === "rock") return "draw";
-    else if (B === "paper") return "lose";
-    else if (B === "scissors") return "win";
-  } else if (A === "paper") {
-    if (B === "rock") return "win";
-    else if (B === "paper") return "draw";
-    else if (B === "scissors") return "lose";
-  } else if (A === "scissors") {            
-    if (B === "rock") return "lose";
-    else if (B === "paper") return "win";
-    else if (B === "scissors") return "draw";
+function playRound() {
+  console.log("Entered eventHandler1111()");
+  console.log(this);
+  const cpuMove = getComputerChoice();
+  const playerMove = (this.childNodes[0].data).toLowerCase();
+  if (cpuMove === playerMove) {
+    console.log("TIE!");
+    announcer.textContent = "TIE!";
+    round++;
+    scoreboard.update();
   }
-  return "incorrect input";
-}
-
-/** playRoud()
- * Simulate round and calculate winner
- * Side Effects: playerScore and computerScore variables are updated
- * */
-function playRound(playerMove, computerMove) {
-  console.log("Entered playRound");
-
-  switch (scoreA(playerMove, computerMove)) {
-    case "win" :
-      playerScore +=1 ;
-      return `Nice job! ${playerMove} beats ${computerMove}!`;
-    case "lose" :
-      computerScore += 1;
-      return `Aw dang! ${computerMove} beats ${playerMove}!`;
-    case "draw" :
-      return "Draw! Try again";
-    default :
-      // Only reached if input was not a valid move
-      computerScore += 1;
-      return "Invalid move! You lose.";
+  else if (cpuMove === "rock" && playerMove === "scissors"
+        || cpuMove === "scissors" && playerMove === "paper"
+        || cpuMove === "paper" && playerMove === "rock") {
+          console.log("LOSE");
+          announcer.textContent = "LOSE :(";
+          round++;
+          computerScore++;
+          scoreboard.update();
+  } else if (cpuMove === "rock" && playerMove === "paper"
+          || cpuMove === "scissors" && playerMove === "rock"
+          || cpuMove === "paper" && playerMove === "scissors") {
+            announcer.textContent = "WIN :D";
+            round++;
+            playerScore++;
+            scoreboard.update();
   }
-}
-
-function playRound(A, B) {
-  console.log("Entered eventHandler()");
-
-  return "incorrect input";
 }
 
 function newGame() {
@@ -117,27 +100,14 @@ function game() {
   // Initialize scoreboard
   scoreboard.classList.remove("hidden");
   scoreboard.update();
+  announcer.textContent = "Let's play ;)";
 
   // Initialize controls
   if (Array.from(controls.childNodes).find(e => e.nodeName === resetBtn.nodeName)) {
     controls.appendChild(resetBtn);
   }
 
-  rock.addEventListener("click", () => {
-    playRound("rock", getComputerChoice());
-    scoreboard.update();
-  });
-  paper.addEventListener("click", () => {
-    playRound("paper", getComputerChoice());
-    scoreboard.update();
-  });
-  scissors.addEventListener("click", () => {
-    playRound("scissors", getComputerChoice());
-    scoreboard.update();
-  });
+  rock.addEventListener("click", playRound);
+  paper.addEventListener("click", playRound);
+  scissors.addEventListener("click", playRound);
 }
-
-const playBtn = document.getElementById("play_button");
-playBtn.addEventListener("click", game);
-
-//game();
