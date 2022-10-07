@@ -21,6 +21,12 @@
     Reworking old code is an important part of a programmer’s
     life.
 
+
+    current mission: fix the reset button thing 
+
+    instead remove the game() event handler from the play button
+    change the play button text to now say new game
+    add new game set up event
  */
 
 let round = 1;
@@ -105,28 +111,24 @@ function playRound() {
 }
 
 function newGame() {
-  this.remove();
-  scoreboard.classList.add("hidden");
+  playing = true;
+  game();
+}
+
+function game() {
+  playing = true;
+  // will only affect first game
+  scoreboard.classList.remove("hidden");
+
   announcer.textContent = "";
   round = 1;
   playerScore = 0;
   computerScore = 0;
-  playing = true;
-}
-
-function game() {
-  if (!playing) return;
-  playing = true;
-  scoreboard.classList.remove("hidden");
   scoreboard.update();
   announcer.textContent = "Let's play ;)";
+  this.textContent = "New Game";
 
-  // Initialize controls
-  if (Array.from(controls.childNodes).find(e => e.nodeName === resetBtn.nodeName)) {
-    controls.appendChild(resetBtn);
-  }
-
-  rock.addEventListener("click", playRound);
-  paper.addEventListener("click", playRound);
-  scissors.addEventListener("click", playRound);
+  rock.addEventListener('click', playRound);
+  paper.addEventListener('click', playRound);
+  scissors.addEventListener('click', playRound);
 }
