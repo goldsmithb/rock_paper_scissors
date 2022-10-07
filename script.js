@@ -96,16 +96,45 @@ function playRound(playerMove, computerMove) {
   }
 }
 
+function evenHandler() {
+  console.log("Entered eventHandler()");
+  if (this.id === "rock") {
+    if (B === "rock") return "draw";
+    else if (B === "paper") return "lose";
+    else if (B === "scissors") return "win";
+  } else if (this.id === "paper") {
+    if (B === "rock") return "win";
+    else if (B === "paper") return "draw";
+    else if (B === "scissors") return "lose";
+  } else if (this.id === "scissors") {            
+    if (B === "rock") return "lose";
+    else if (B === "paper") return "win";
+    else if (B === "scissors") return "draw";
+  }
+  return "incorrect input";
+}
+
+function newGame() {
+  console.log("hi");
+  this.remove();
+  scoreboard.classList.add("hidden");
+  // reset scoreboard
+  round = 1;
+  playerScore = 0;
+  computerScore = 0;
+}
+
 function game() {
   // Initialize scoreboard
+  console.log(scissors);
   scoreboard.classList.remove('hidden');
   scoreboard.update();
 
   // Initialize controls
-  resetBtn = document.createElement('button');
+  const resetBtn = document.createElement('button');
   resetBtn.textContent = "New Game";
+  resetBtn.addEventListener('click', newGame);
   controls.appendChild(resetBtn);
-  //resetBtn.addEventListener('click', EndTheGame)
 
   rock.addEventListener('click', () => {
     playRound('rock', getComputerChoice());
