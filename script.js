@@ -28,6 +28,10 @@ let playerScore = 0;
 let computerScore = 0;
 let playerMove = '';
 let computerMove = '';
+const resetBtn = document.createElement("button");
+resetBtn.textContent = "New Game";
+resetBtn.addEventListener("click", newGame);
+
 const rock = document.getElementById("rock");
 const paper = document.getElementById("paper");
 const scissors = document.getElementById("scissors");
@@ -70,6 +74,7 @@ function scoreA(A, B) {
   }
   return "incorrect input";
 }
+
 /** playRoud()
  * Simulate round and calculate winner
  * Side Effects: playerScore and computerScore variables are updated
@@ -116,10 +121,11 @@ function game() {
   scoreboard.update();
 
   // Initialize controls
-  const resetBtn = document.createElement("button");
-  resetBtn.textContent = "New Game";
-  resetBtn.addEventListener("click", newGame);
-  controls.appendChild(resetBtn);
+  console.log(resetBtn);
+  console.log(Array.from(controls.childNodes)[0]);
+  if (Array.from(controls.childNodes).find(e => e.nodeName === resetBtn.nodeName)) {
+    controls.appendChild(resetBtn);
+  }
 
   rock.addEventListener("click", () => {
     playRound("rock", getComputerChoice());
