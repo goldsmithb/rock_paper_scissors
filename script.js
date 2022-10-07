@@ -105,7 +105,6 @@ function playRound(A, B) {
 }
 
 function newGame() {
-  console.log("hi");
   this.remove();
   scoreboard.classList.add("hidden");
   // reset scoreboard
@@ -116,13 +115,10 @@ function newGame() {
 
 function game() {
   // Initialize scoreboard
-  console.log(scissors);
   scoreboard.classList.remove("hidden");
   scoreboard.update();
 
   // Initialize controls
-  console.log(resetBtn);
-  console.log(Array.from(controls.childNodes)[0]);
   if (Array.from(controls.childNodes).find(e => e.nodeName === resetBtn.nodeName)) {
     controls.appendChild(resetBtn);
   }
