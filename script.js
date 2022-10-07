@@ -53,6 +53,8 @@ function getComputerChoice() {
 // There must be a better way to code this logic --- TODO
 function scoreA(A, B) {
   console.log("Entered scoreA()");
+
+
   if (A === "rock") {
     if (B === "rock") return "draw";
     else if (B === "paper") return "lose";
@@ -73,7 +75,7 @@ function scoreA(A, B) {
  * Side Effects: playerScore and computerScore variables are updated
  * */
 function playRound(playerMove, computerMove) {
-  console.log("HI");
+  console.log("Entered playRound");
 
   switch (scoreA(playerMove, computerMove)) {
     case "win" :
@@ -110,30 +112,30 @@ function newGame() {
 function game() {
   // Initialize scoreboard
   console.log(scissors);
-  scoreboard.classList.remove('hidden');
+  scoreboard.classList.remove("hidden");
   scoreboard.update();
 
   // Initialize controls
-  const resetBtn = document.createElement('button');
+  const resetBtn = document.createElement("button");
   resetBtn.textContent = "New Game";
-  resetBtn.addEventListener('click', newGame);
+  resetBtn.addEventListener("click", newGame);
   controls.appendChild(resetBtn);
 
-  rock.addEventListener('click', () => {
-    playRound('rock', getComputerChoice());
+  rock.addEventListener("click", () => {
+    playRound("rock", getComputerChoice());
     scoreboard.update();
   });
-  paper.addEventListener('click', () => {
-    playRound('paper', getComputerChoice());
+  paper.addEventListener("click", () => {
+    playRound("paper", getComputerChoice());
     scoreboard.update();
   });
-  scissors.addEventListener('click', () => {
-    playRound('scissors', getComputerChoice());
+  scissors.addEventListener("click", () => {
+    playRound("scissors", getComputerChoice());
     scoreboard.update();
   });
 }
 
 const playBtn = document.getElementById("play_button");
-playBtn.addEventListener('click', game);
+playBtn.addEventListener("click", game);
 
 //game();
