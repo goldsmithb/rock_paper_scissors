@@ -45,13 +45,8 @@ scoreboard.update = function () {
  * @returns a valid move
  */
 function getComputerChoice() {
-  console.log("Entered getComputerChoice()");
-  let choice = Math.floor(Math.random()*3);
-  switch(choice) {
-    case 0: return "rock";
-    case 1: return "paper";
-    case 2: return "scissors";
-  }
+  const choices = ["rock", "paper", "scissors"];
+  return choices[Math.floor(Math.random()*3)];
 }
 
 // Return the score from perspective of player A's move
@@ -96,21 +91,9 @@ function playRound(playerMove, computerMove) {
   }
 }
 
-function evenHandler() {
+function playRound(A, B) {
   console.log("Entered eventHandler()");
-  if (this.id === "rock") {
-    if (B === "rock") return "draw";
-    else if (B === "paper") return "lose";
-    else if (B === "scissors") return "win";
-  } else if (this.id === "paper") {
-    if (B === "rock") return "win";
-    else if (B === "paper") return "draw";
-    else if (B === "scissors") return "lose";
-  } else if (this.id === "scissors") {            
-    if (B === "rock") return "lose";
-    else if (B === "paper") return "win";
-    else if (B === "scissors") return "draw";
-  }
+
   return "incorrect input";
 }
 
