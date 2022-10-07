@@ -28,7 +28,7 @@ let playerScore = 0;
 let computerScore = 0;
 let playerMove = '';
 let computerMove = '';
-let playing = false;
+let playing = true;
 const resetBtn = document.createElement("button");
 resetBtn.textContent = "New Game";
 resetBtn.addEventListener("click", newGame);
@@ -45,9 +45,8 @@ playBtn.addEventListener("click", game);
 
 
 scoreboard.update = function () {
-  scoreboard.childNodes[0].textContent = `Round: ${round}`;
-  scoreboard.childNodes[1].textContent = `Player: ${playerScore}`;
-  scoreboard.childNodes[2].textContent = `Computer: ${computerScore}`;
+  scoreboard.innerHTML = `First to five!<br>Round: ${round}<br>Player: 
+                            ${playerScore}<br>Computer: ${computerScore}<br>`;
 }
 
 /**
@@ -88,8 +87,21 @@ function playRound() {
             playerScore++;
             scoreboard.update();
   }
-  announcer.textContent += `\n\n\nYou threw ${playerMove} and the computer 
+  announcer.innerHTML += `<br>You threw ${playerMove} and the computer 
                             threw ${cpuMove}.`;
+
+  // check for a winner
+  if (playerScore === 5 || computerScore === 5) {
+    if (playerScore > computerScore) {
+      announcer.textContent = "YOU WON THE GAME!!!";
+      scoreboard.innerHTML += "YOU WON THE GAME!!! Press the button to play again.";
+    } else {
+      announcer.textContent = "YOU LOST!!! That's unfortunate.";
+      scoreboard.innerHTML += "YOU LOST. But don't fear--press the button to start a new game!";
+    }
+    playing = false;
+    return;
+  }
 }
 
 function newGame() {
@@ -99,10 +111,11 @@ function newGame() {
   round = 1;
   playerScore = 0;
   computerScore = 0;
-  playing = false;
+  playing = true;
 }
 
 function game() {
+  if (!playing) return;
   playing = true;
   scoreboard.classList.remove("hidden");
   scoreboard.update();
