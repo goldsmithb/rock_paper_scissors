@@ -32,7 +32,7 @@ const resetBtn = document.createElement("button");
 resetBtn.textContent = "New Game";
 resetBtn.addEventListener("click", newGame);
 
-const rock = document.getElementById("rock");
+const rock = document.getElementById("rock");  
 const paper = document.getElementById("paper");
 const scissors = document.getElementById("scissors");
 const scoreboard = document.getElementById("scoreboard");
