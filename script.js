@@ -28,6 +28,7 @@ let playerScore = 0;
 let computerScore = 0;
 let playerMove = '';
 let computerMove = '';
+let playing = false;
 const resetBtn = document.createElement("button");
 resetBtn.textContent = "New Game";
 resetBtn.addEventListener("click", newGame);
@@ -59,6 +60,8 @@ function getComputerChoice() {
 }
 
 function playRound() {
+  if (!playing) return;
+
   console.log("Entered eventHandler1111()");
   console.log(this);
   const cpuMove = getComputerChoice();
@@ -85,19 +88,22 @@ function playRound() {
             playerScore++;
             scoreboard.update();
   }
+  announcer.textContent += `\n\n\nYou threw ${playerMove} and the computer 
+                            threw ${cpuMove}.`;
 }
 
 function newGame() {
   this.remove();
   scoreboard.classList.add("hidden");
-  // reset scoreboard
+  announcer.textContent = "";
   round = 1;
   playerScore = 0;
   computerScore = 0;
+  playing = false;
 }
 
 function game() {
-  // Initialize scoreboard
+  playing = true;
   scoreboard.classList.remove("hidden");
   scoreboard.update();
   announcer.textContent = "Let's play ;)";
