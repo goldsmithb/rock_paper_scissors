@@ -14,8 +14,10 @@ header, #announcer_div, #controls {
   border: 2px solid black;
   border-radius: 7px;
   height: 100%;
-  width: 100%;
-  margin: 20px;
+  width: auto;
+  margin: 0 20%;
+  padding: 0 100px;
+  text-align: center;
 }
 
 #scoreboard {
