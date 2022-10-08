@@ -3,6 +3,21 @@ body {
   font-family: 'Silkscreen', cursive;
 }
 
+header, #announcer_div, #controls {
+  display: flex;
+  justify-content: center;
+}
+
+.announcer_div {
+  background-color: gray;
+  color: blueviolet;
+  border: 2px solid black;
+  border-radius: 7px;
+  height: 100%;
+  width: 100%;
+  margin: 20px;
+}
+
 #scoreboard {
   color: blue;
   background-color: green;
