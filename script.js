@@ -41,6 +41,9 @@ arena.draw = function (playerMove, cpuMove) {
         child.remove();
     }
   }
+
+  if (playerMove === undefined || cpuMove === undefined) return;
+
   const player = document.createElement('img')
   const middleText = document.createElement('span');
   const cpu = document.createElement('img')
@@ -127,6 +130,9 @@ function game() {
   playing = true;
   // will only affect first game
   scoreboard.classList.remove("hidden");
+
+  // clear arena
+  arena.draw();
 
   announcer.textContent = "";
   round = 1;
