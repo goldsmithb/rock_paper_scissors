@@ -139,6 +139,8 @@ function game() {
   scoreboard.update();
   announcer.textContent = "Let's play ;)";
   this.textContent = "New Game";
+  this.classList.remove("ready");
+  this.classList.add("set");
 
   rock.addEventListener('click', playRound);
   paper.addEventListener('click', playRound);

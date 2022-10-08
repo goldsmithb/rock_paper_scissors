@@ -1,11 +1,12 @@
-body {
+body, input, textarea, button {
   box-sizing: border-box;
-  font-family: 'Silkscreen', cursive;
+  font-family: 'Silkscreen', sans-serif;
 }
 
 header, #announcer_div, #controls {
   display: flex;
   justify-content: center;
+  gap: 15px;
 }
 
 #arena {
@@ -30,6 +31,41 @@ header, #announcer_div, #controls {
   text-align: center;
 }
 
+#controls img {
+  width: 100px;
+  height: 100px;
+}
+
+.controls__card {
+  display: flex;
+  flex-direction: column;
+}
+
+.webpage_middle {
+  text-align: center;
+}
+
+button {
+  transition: all .2s ease-in-out;
+  margin: 15px;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.ready {
+  background-color: green;
+  border: 5px double white;
+  color: white;
+}
+
+.set {
+  background-color: red;
+  border: 5px double white;
+  color: white;
+}
+
 #scoreboard {
   color: blue;
   background-color: green;
@@ -38,9 +74,4 @@ header, #announcer_div, #controls {
 
 .hidden {
   display: none;
-}
-
-#controls img {
-  width: 100px;
-  height: 100px;
 }
