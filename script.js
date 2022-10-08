@@ -47,9 +47,9 @@ arena.draw = function (playerMove, cpuMove) {
   const player = document.createElement('img')
   const middleText = document.createElement('span');
   const cpu = document.createElement('img')
-  player.src = `/media/${playerMove}.PNG`;
+  player.src = `/media/${playerMove}.png`;
   player.style = "width: 80px; height: 80px;";
-  cpu.src = `/media/${cpuMove}.PNG`;
+  cpu.src = `/media/${cpuMove}.png`;
   cpu.style = "width: 80px; height: 80px;";
 
   switch(result) {
