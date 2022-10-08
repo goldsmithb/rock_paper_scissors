@@ -2,12 +2,19 @@
 
  */
 
+const Result = {
+  Win: "win",
+  Lose: "lose",
+  Tie: "tie"
+}
+
 let round = 1;
 let playerScore = 0;
 let computerScore = 0;
 let playerMove = '';
 let computerMove = '';
 let playing = true;
+let result;
 const rock = document.getElementById("rock");  
 const paper = document.getElementById("paper");
 const scissors = document.getElementById("scissors");
@@ -29,22 +36,33 @@ arena.draw = function (playerMove, cpuMove) {
   // If there is already a tableau drawn, delete it
   if (this.innerHTML.includes("img")) {
     const children = Array.from(this.childNodes);
-    console.log("images already there")
     for (let child of children) {
-      if (child.nodeName === "IMG")
+      if (child.nodeName === "IMG" || child.nodeName === "SPAN")
         child.remove();
     }
   }
   const player = document.createElement('img')
+  const middleText = document.createElement('span');
   const cpu = document.createElement('img')
-  console.log(this);
-  console.log(player);
-  console.log(cpu);
   player.src = `/media/${playerMove}.png`;
   player.style = "width: 80px; height: 80px;";
   cpu.src = `/media/${cpuMove}.png`;
   cpu.style = "width: 80px; height: 80px;";
+
+  switch(result) {
+    case Result.Win:
+      middleText.textContent = " > ";
+      break;
+    case Result.Tie:
+      middleText.textContent = " --- ";
+      break;
+    case Result.Lose:
+      middleText.textContent = " < ";
+      break;
+  }
+
   this.appendChild(player);
+  this.appendChild(middleText);
   this.appendChild(cpu);
 }
 
@@ -60,12 +78,10 @@ function getComputerChoice() {
 function playRound() {
   if (!playing) return;
 
-  console.log("Entered eventHandler1111()");
-  console.log(this);
   const cpuMove = getComputerChoice();
   const playerMove = (this.childNodes[0].data).toLowerCase();
   if (cpuMove === playerMove) {
-    console.log("TIE!");
+    result = Result.Tie;
     announcer.textContent = "TIE!";
     round++;
     scoreboard.update();
@@ -73,7 +89,7 @@ function playRound() {
   else if (cpuMove === "rock" && playerMove === "scissors"
         || cpuMove === "scissors" && playerMove === "paper"
         || cpuMove === "paper" && playerMove === "rock") {
-    console.log("LOSE");
+    result = Result.Lose;
     announcer.textContent = "LOSE :(";
     round++;
     computerScore++;
@@ -81,7 +97,8 @@ function playRound() {
   } else if (cpuMove === "rock" && playerMove === "paper"
           || cpuMove === "scissors" && playerMove === "rock"
           || cpuMove === "paper" && playerMove === "scissors") {
-      announcer.textContent = "WIN :D";
+    result = Result.Win;
+    announcer.textContent = "WIN :D";
       round++;
       playerScore++;
       scoreboard.update();
