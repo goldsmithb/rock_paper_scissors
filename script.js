@@ -13,7 +13,7 @@ let playerScore = 0;
 let computerScore = 0;
 let playerMove = '';
 let computerMove = '';
-let playing = true;
+let playing = true;   // this allows us to turn off the RPS buttons after a winner is declared and before starting a new game
 let result;
 const rock = document.getElementById("rock");  
 const paper = document.getElementById("paper");
@@ -118,13 +118,9 @@ function playRound() {
       scoreboard.innerHTML += "YOU LOST. But don't fear--press the button to start a new game!";
     }
     playing = false;
+    playBtn.classList.add("ready");
     return;
   }
-}
-
-function newGame() {
-  playing = true;
-  game();
 }
 
 function game() {
@@ -140,7 +136,6 @@ function game() {
   announcer.textContent = "Let's play ;)";
   this.textContent = "New Game";
   this.classList.remove("ready");
-  this.classList.add("set");
 
   rock.addEventListener('click', playRound);
   paper.addEventListener('click', playRound);

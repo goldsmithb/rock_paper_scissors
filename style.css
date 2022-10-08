@@ -54,14 +54,14 @@ button:hover {
   transform: scale(1.1);
 }
 
-.ready {
-  background-color: green;
+#play_button {
+  background-color: red;
   border: 5px double white;
   color: white;
 }
 
-.set {
-  background-color: red;
+#play_button.ready {
+  background-color: green;
   border: 5px double white;
   color: white;
 }
