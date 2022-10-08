@@ -49,21 +49,46 @@ function playRound() {
   else if (cpuMove === "rock" && playerMove === "scissors"
         || cpuMove === "scissors" && playerMove === "paper"
         || cpuMove === "paper" && playerMove === "rock") {
-          console.log("LOSE");
-          announcer.textContent = "LOSE :(";
-          round++;
-          computerScore++;
+    console.log("LOSE");
+    announcer.textContent = "LOSE :(";
+    round++;
+    computerScore++;
           scoreboard.update();
   } else if (cpuMove === "rock" && playerMove === "paper"
           || cpuMove === "scissors" && playerMove === "rock"
           || cpuMove === "paper" && playerMove === "scissors") {
-            announcer.textContent = "WIN :D";
-            round++;
-            playerScore++;
-            scoreboard.update();
+      announcer.textContent = "WIN :D";
+      round++;
+      playerScore++;
+      scoreboard.update();
   }
   announcer.innerHTML += `<br>You threw ${playerMove} and the computer 
                             threw ${cpuMove}.`;
+
+  // create tableau in arena
+  // delete old tableau if present - TODO
+  const arena = document.getElementById("arena");
+  // check if there are already images in the div
+  // If they are present, clear them out
+  if (arena.innerHTML.includes("img")) {
+    const children = Array.from(arena.childNodes);
+    console.log("images already there")
+    for (let child of children) {
+      if (child.nodeName === "IMG")
+        child.remove();
+    }
+  }
+  const player = document.createElement('img')
+  const cpu = document.createElement('img')
+  console.log(arena);
+  console.log(player);
+  console.log(cpu);
+  player.src = `/media/${playerMove}.png`;
+  player.style = "width: 80px; height: 80px;";
+  cpu.src = `/media/${cpuMove}.png`;
+  cpu.style = "width: 80px; height: 80px;";
+  arena.appendChild(player);
+  arena.appendChild(cpu);
 
   // check for a winner
   if (playerScore === 5 || computerScore === 5) {

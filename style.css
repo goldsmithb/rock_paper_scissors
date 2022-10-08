@@ -8,6 +8,13 @@ header, #announcer_div, #controls {
   justify-content: center;
 }
 
+#arena {
+  width: auto;
+  height: 120px;
+  margin: 25px auto;
+  background-color: rgb(255, 157, 104);
+}
+
 .announcer_div {
   background-color: gray;
   color: blueviolet;
@@ -16,7 +23,7 @@ header, #announcer_div, #controls {
   height: 100%;
   width: auto;
   margin: 0 20%;
-  padding: 0 100px;
+  padding: 4px 10px;
   text-align: center;
 }
 
