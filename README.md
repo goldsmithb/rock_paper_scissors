@@ -1,6 +1,6 @@
 # rock_paper_scissors
 
-Simple rock paper scissors game in browser. [Hosted here].(https://goldsmithb.github.io/rock_paper_scissors/)
+Simple rock paper scissors game in browser. [Hosted here](https://goldsmithb.github.io/rock_paper_scissors/).
 
 ## To Do
 * Improve GUI
