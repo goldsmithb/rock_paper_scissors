@@ -15,6 +15,7 @@ const scoreboard = document.getElementById("scoreboard");
 const controls = document.getElementById("controls");
 const announcer = document.getElementById("announcer");
 const playBtn = document.getElementById("play_button");
+const arena = document.getElementById("arena");
 playBtn.addEventListener("click", game);
 
 
@@ -22,6 +23,29 @@ playBtn.addEventListener("click", game);
 scoreboard.update = function () {
   scoreboard.innerHTML = `First to five!<br>Round: ${round}<br>Player: 
                             ${playerScore}<br>Computer: ${computerScore}<br>`;
+}
+
+arena.draw = function (playerMove, cpuMove) {
+  // If there is already a tableau drawn, delete it
+  if (this.innerHTML.includes("img")) {
+    const children = Array.from(this.childNodes);
+    console.log("images already there")
+    for (let child of children) {
+      if (child.nodeName === "IMG")
+        child.remove();
+    }
+  }
+  const player = document.createElement('img')
+  const cpu = document.createElement('img')
+  console.log(this);
+  console.log(player);
+  console.log(cpu);
+  player.src = `/media/${playerMove}.png`;
+  player.style = "width: 80px; height: 80px;";
+  cpu.src = `/media/${cpuMove}.png`;
+  cpu.style = "width: 80px; height: 80px;";
+  this.appendChild(player);
+  this.appendChild(cpu);
 }
 
 /**
@@ -65,30 +89,7 @@ function playRound() {
   announcer.innerHTML += `<br>You threw ${playerMove} and the computer 
                             threw ${cpuMove}.`;
 
-  // create tableau in arena
-  // delete old tableau if present - TODO
-  const arena = document.getElementById("arena");
-  // check if there are already images in the div
-  // If they are present, clear them out
-  if (arena.innerHTML.includes("img")) {
-    const children = Array.from(arena.childNodes);
-    console.log("images already there")
-    for (let child of children) {
-      if (child.nodeName === "IMG")
-        child.remove();
-    }
-  }
-  const player = document.createElement('img')
-  const cpu = document.createElement('img')
-  console.log(arena);
-  console.log(player);
-  console.log(cpu);
-  player.src = `/media/${playerMove}.png`;
-  player.style = "width: 80px; height: 80px;";
-  cpu.src = `/media/${cpuMove}.png`;
-  cpu.style = "width: 80px; height: 80px;";
-  arena.appendChild(player);
-  arena.appendChild(cpu);
+  arena.draw(playerMove, cpuMove);
 
   // check for a winner
   if (playerScore === 5 || computerScore === 5) {

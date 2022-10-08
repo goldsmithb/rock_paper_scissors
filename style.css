@@ -13,6 +13,9 @@ header, #announcer_div, #controls {
   height: 120px;
   margin: 25px auto;
   background-color: rgb(255, 157, 104);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .announcer_div {
