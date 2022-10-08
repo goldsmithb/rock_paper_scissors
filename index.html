@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet"> 
     <script src="script.js" defer></script>
     <title>Rock Paper Scissors</title>
 </head>
@@ -14,13 +15,17 @@
   <h1>Rock Paper Scissors!</h1>
 </header>
 
-<div id="controls">
-  <button id="play_button">Play</button>
+<div id="announcer_div">
+  <span id="announcer"></spab>
 </div>
-<div>
-  <button id="rock">Rock</button>
-  <button id="paper">Paper</button>
-  <button id="scissors">Scissors</button>
+
+<div id="controls">
+  <div>
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+  </div>
+  <button id="play_button">Play</button>
 </div>
 
 <div id="scoreboard" class="hidden">
@@ -28,8 +33,6 @@
   <div id="scoreboard__player"></div>
   <div id="scoreboard__computer"></div>
 </div>
-
-<h1 id="announcer"></h1>
 
 </body>
 </html>
