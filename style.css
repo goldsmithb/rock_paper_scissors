@@ -29,3 +29,8 @@ header, #announcer_div, #controls {
 .hidden {
   display: none;
 }
+
+#controls img {
+  width: 100px;
+  height: 100px;
+}
